@@ -1,0 +1,20 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "file-manager",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmidaWolf/file-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmidaWolf/file-manager/issues"
+  },
+  "homepage": "https://github.com/AmidaWolf/file-manager#readme"
+}
