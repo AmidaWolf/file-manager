@@ -1,6 +1,6 @@
 import fs from "fs";
 import { sortDirsAndFiles } from "./sortDirsAndFiles.js";
-import { currentlyPathString } from "../constants.js";
+import { printCurrentlyDirectory } from "./printCurrentlyDirectory.js";
 
 export const listingDirectories = () => {
   fs.readdir(process.cwd(), {withFileTypes: true},  (err, files) => {
@@ -27,6 +27,6 @@ export const listingDirectories = () => {
     arrFiles.sort(sortDirsAndFiles)
 
     console.table(arrFiles)
-    console.log(currentlyPathString + process.cwd())
+    printCurrentlyDirectory()
   });
 }

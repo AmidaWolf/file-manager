@@ -1,12 +1,13 @@
 import { currentlyPathString, operationFailedErrorString } from "../constants.js";
 import path from "path";
+import { printCurrentlyDirectory } from "./printCurrentlyDirectory.js";
 
 export const changeCurrentDirectory = (destination) => {
   const oldPathObj = path.parse(process.cwd())
 
   if (destination === '..') {
     if (oldPathObj.root === oldPathObj.dir && oldPathObj.base === '') {
-      return console.log(currentlyPathString + process.cwd())
+      return printCurrentlyDirectory()
     }
 
     process.chdir(path.join(process.cwd(), '..'))
@@ -19,6 +20,6 @@ export const changeCurrentDirectory = (destination) => {
     catch (error) {
       console.log(operationFailedErrorString)
     }
-    console.log(currentlyPathString + process.cwd())
+    printCurrentlyDirectory()
   }
 }
