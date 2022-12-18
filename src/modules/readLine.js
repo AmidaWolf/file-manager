@@ -5,7 +5,7 @@ import {
   goodbyeString,
   helloString,
   invalidInputErrorString,
-  navigation, operations, startingDirectory
+  navigation, operations, osInfo, startingDirectory
 } from "../constants.js";
 import { changeCurrentDirectory } from "./navigation/changeCurrentDirectory.js";
 import { listingDirectories } from "./navigation/listingDirectories.js";
@@ -15,6 +15,11 @@ import { renameFile } from "./operations/renameFile.js";
 import { copyFile } from "./operations/copyFile.js";
 import { moveFile } from "./operations/moveFile.js";
 import { removeFile } from "./operations/removeFile.js";
+import { displayEOL } from "./osInfo/displayEOL.js";
+import { displayCPUs } from "./osInfo/displayCPUs.js";
+import { displayHomeDir } from "./osInfo/displayHoneDir.js";
+import { displayUsername } from "./osInfo/displayUsername.js";
+import { displayArch } from "./osInfo/displayArch.js";
 
 export const startReadLine = () => {
   const rl = readline.createInterface({
@@ -88,6 +93,16 @@ export const startReadLine = () => {
       } else {
         removeFile(arrayStrings[1])
       }
+    } else if (input === osInfo["os --EOL"]) {
+      displayEOL()
+    } else if (input === osInfo["os --cpus"]) {
+      displayCPUs()
+    } else if (input === osInfo["os --homedir"]) {
+      displayHomeDir()
+    } else if (input === osInfo["os --username"]) {
+      displayUsername()
+    } else if (input === osInfo["os --architecture"]) {
+      displayArch()
     } else {
       console.log(invalidInputErrorString)
     }
