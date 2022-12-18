@@ -1,12 +1,14 @@
 import fs from "fs";
-import path from "path";
 import stream from "stream";
 import { operationFailedErrorString } from "../../constants.js";
 import { printCurrentlyDirectory } from "../helpers/printCurrentlyDirectory.js";
+import { checkAbsolutePathAndRefactorIt } from "../helpers/checkAbsolutePathAndRefactorIt.js";
 
 export const moveFile = (filePath, fileNewPath) => {
-  const readableStream = fs.createReadStream(path.join(process.cwd(), filePath));
-  const writableStream = fs.createWriteStream(path.join(process.cwd(), fileNewPath));
+  const paths = checkAbsolutePathAndRefactorIt(filePath, fileNewPath)
+
+  const readableStream = fs.createReadStream(paths[0]);
+  const writableStream = fs.createWriteStream(paths[1]);
 
   stream.pipeline(readableStream, writableStream, (error) => {
     if (error) console.log(operationFailedErrorString);

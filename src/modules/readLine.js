@@ -1,8 +1,9 @@
 import readline from "readline";
 import {
+  archiveOperations,
   currentlyPathString,
   exitOperation,
-  goodbyeString,
+  goodbyeString, hashOperation as hash,
   helloString,
   invalidInputErrorString,
   navigation, operations, osInfo, startingDirectory
@@ -20,6 +21,9 @@ import { displayCPUs } from "./osInfo/displayCPUs.js";
 import { displayHomeDir } from "./osInfo/displayHoneDir.js";
 import { displayUsername } from "./osInfo/displayUsername.js";
 import { displayArch } from "./osInfo/displayArch.js";
+import { calcHash } from "./hash/calcHash.js";
+import { compressFile } from "./archive/compressFile.js";
+import { decompressFile } from "./archive/decompressFile.js";
 
 export const startReadLine = () => {
   const rl = readline.createInterface({
@@ -103,7 +107,31 @@ export const startReadLine = () => {
       displayUsername()
     } else if (input === osInfo["os --architecture"]) {
       displayArch()
-    } else {
+    } else if (input.startsWith(hash.hash)) {
+      const arrayStrings = input.split(' ')
+
+      if (arrayStrings.length === 1 || arrayStrings.length > 2) {
+        console.log(invalidInputErrorString)
+      } else {
+        calcHash(arrayStrings[1])
+      }
+    } else if (input.startsWith(archiveOperations.compress)) {
+      const arrayStrings = input.split(' ')
+
+      if (arrayStrings.length === 1 || arrayStrings.length > 3) {
+        console.log(invalidInputErrorString)
+      } else {
+        compressFile(arrayStrings[1], arrayStrings[2])
+      }
+    } else if (input.startsWith(archiveOperations.decompress)) {
+      const arrayStrings = input.split(' ')
+
+      if (arrayStrings.length === 1 || arrayStrings.length > 3) {
+        console.log(invalidInputErrorString)
+      } else {
+        decompressFile(arrayStrings[1], arrayStrings[2])
+      }
+    }  else {
       console.log(invalidInputErrorString)
     }
   });

@@ -1,10 +1,10 @@
 import fs from "fs";
 import { operationFailedErrorString } from "../../constants.js";
-import path from "path";
 import { printCurrentlyDirectory } from "../helpers/printCurrentlyDirectory.js";
+import { checkAbsolutePathAndRefactorIt } from "../helpers/checkAbsolutePathAndRefactorIt.js";
 
 export const createFile = (filePath) => {
-  fs.open(path.join(process.cwd(), filePath), 'w', (err) => {
+  fs.open(checkAbsolutePathAndRefactorIt(filePath), 'w', (err) => {
     if (err) console.log(operationFailedErrorString)
 
     printCurrentlyDirectory()
