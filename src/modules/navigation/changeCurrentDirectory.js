@@ -1,6 +1,6 @@
-import { currentlyPathString, operationFailedErrorString } from "../constants.js";
+import { currentlyPathString, operationFailedErrorString } from "../../constants.js";
 import path from "path";
-import { printCurrentlyDirectory } from "./printCurrentlyDirectory.js";
+import { printCurrentlyDirectory } from "../helpers/printCurrentlyDirectory.js";
 
 export const changeCurrentDirectory = (destination) => {
   const oldPathObj = path.parse(process.cwd())

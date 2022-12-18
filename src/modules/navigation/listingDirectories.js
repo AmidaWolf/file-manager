@@ -1,6 +1,6 @@
 import fs from "fs";
-import { sortDirsAndFiles } from "./sortDirsAndFiles.js";
-import { printCurrentlyDirectory } from "./printCurrentlyDirectory.js";
+import { sortDirsAndFiles } from "../helpers/sortDirsAndFiles.js";
+import { printCurrentlyDirectory } from "../helpers/printCurrentlyDirectory.js";
 
 export const listingDirectories = () => {
   fs.readdir(process.cwd(), {withFileTypes: true},  (err, files) => {

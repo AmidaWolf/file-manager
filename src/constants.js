@@ -1,4 +1,4 @@
-import { parseUsernameInArgs } from "./modules/parseUsernameInArgs.js";
+import { parseUsernameInArgs } from "./modules/helpers/parseUsernameInArgs.js";
 import { homedir } from "os";
 
 export const startingDirectory = homedir()
